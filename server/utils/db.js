@@ -1,22 +1,12 @@
 const mongoose = require("mongoose");
 const UrlLocal = "mongodb://127.0.0.1:27017/server_admin";
 
+const UrlLive = "mongodb+srv://arko:<Password>@cluster0.k7vbf82.mongodb.net/server_admin?retryWrites=true&w=majority&appName=Cluster0";
+
 const connectDB = async () => {
-    try {
-        await mongoose.connect(UrlLocal, {
-            serverSelectionTimeoutMS: 5000, // Timeout after 5 seconds
-        });
-        
-        console.log("MongoDB Connected successfully");
-        
-        mongoose.connection.on('connected', () => {
-            console.log('Mongoose is connected');
-        });
-        
-        mongoose.connection.on('error', (err) => {
-            console.error('Mongoose connection error:', err);
-        });
-        
+     try {
+        await mongoose.connect(UrlLive);
+        console.log("Connection successful to DB");
     } catch (error) {
         console.error("Database connection failed:", error.message);
         console.error("Please make sure:");
@@ -28,8 +18,3 @@ const connectDB = async () => {
 }
 
 module.exports = connectDB;
-
-//  {
-//             useNewUrlParser: true,
-//             useUnifiedTopology: true,
-//         }
