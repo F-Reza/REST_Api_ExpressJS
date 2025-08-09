@@ -28,4 +28,33 @@ const register = async (req, res) => {
   }
 };
 
+
+// *-------------------// Profile Logic
+// *-------------------
+const profile = async (req, res) => {
+  try {
+    const userId = req.body.userId; // Assuming user ID is sent in the request body
+    // Here you would typically fetch user data from a database
+    res.status(200).json({ message: `Profile data for user ${userId}` });
+  } catch (error) {
+    res.status(500).json({ message: "Internal server error" });
+  }
+};
+
+
+// *-------------------// Update Logic
+// *-------------------
+const update = async (req, res) => {
+  try {
+    const userId = req.body.userId; // Assuming user ID is sent in the request body
+    const updatedData = req.body.data; // Assuming updated data is sent in the request body
+    // Here you would typically update user data in a database
+    res.status(200).json({ message: `User ${userId} updated successfully`, data: updatedData });
+  } catch (error) {
+    res.status(500).json({ message: "Internal server error" });
+  }
+};
+
+
+
 module.exports = { home, register };
