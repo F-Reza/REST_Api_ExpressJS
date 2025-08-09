@@ -29,7 +29,8 @@ const register = async (req, res) => {
 };
 
 
-// *-------------------// Profile Logic
+// *-------------------
+// // Profile Logic
 // *-------------------
 const profile = async (req, res) => {
   try {
@@ -42,7 +43,8 @@ const profile = async (req, res) => {
 };
 
 
-// *-------------------// Update Logic
+// *-------------------
+// // Update Logic
 // *-------------------
 const update = async (req, res) => {
   try {
