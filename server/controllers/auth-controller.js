@@ -57,4 +57,4 @@ const update = async (req, res) => {
 
 
 
-module.exports = { home, register };
+module.exports = { home, register, profile, update };
