@@ -1,4 +1,5 @@
    const User = require('../models/user-model'); // Import User model here
+   const bcrypt = require('bcryptjs'); // Import bcrypt for password hashing
 
 // *-------------------
 // Home Logic
@@ -29,14 +30,18 @@ const register = async (req, res) => {
     if (existingUser) {
       return res.status(400).json({ message: "User already exists" });
     }
+
+    // Hash the password before saving (optional but recommended)
+    const hashedPassword = await bcrypt.hash(password, 10);
     // Create new user
     const newUser = new User({
       name,
       email,
       phone,
       address,
-      password, // In a real application, you should hash the password before saving it
+      password: hashedPassword, // In a real application, you should hash the password before saving it
     });
+    // Save the new user to the database
     const data = await newUser.save();
     // Respond with success message
     res.status(201).json({ message: "User registered successfully", data: data });
