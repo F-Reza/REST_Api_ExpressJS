@@ -39,7 +39,8 @@ const register = async (req, res) => {
       email,
       phone,
       address,
-      password: hashedPassword, // In a real application, you should hash the password before saving it
+      password, 
+      //password: hashedPassword, // In a real application, you should hash the password before saving it
     });
     // Save the new user to the database
     const data = await newUser.save();
