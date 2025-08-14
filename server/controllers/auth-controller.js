@@ -27,12 +27,23 @@ const login = async (req, res) => {
     if (!user) {
       return res.status(400).json({ message: "User not found" });
     }
+
+    // Check if user is an admin
+    if (user.isAdmin) {
+      return res.status(403).json({ message: "Admin access denied" });
+    }
+
+    // const isMatchPass = await user.comparePassword(password);
+    // if (!isMatchPass) {
+    //   return res.status(400).json({ message: "Invalid password" });
+    // }
+
     // Check password
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
       return res.status(400).json({ message: "Invalid password" });
     }
-
+    
     // Generate token
     const token = await user.generateAuthToken();
     // Respond with success message and token
@@ -88,6 +99,7 @@ const register = async (req, res) => {
     });
   } catch (error) {
     res.status(500).json({ message: "Internal server error" });
+    // next(error); // Pass the error to the next middleware for centralized error handling
   }
 };
 
