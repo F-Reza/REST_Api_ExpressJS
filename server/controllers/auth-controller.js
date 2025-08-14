@@ -13,6 +13,41 @@ const home = async (req, res) => {
 };
 
 // *-------------------
+// Login Logic
+// *-------------------
+const login = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    // Validate input
+    if (!email || !password) {
+      return res.status(400).json({ message: "Email and password are required" });
+    }
+    // Check if user exists
+    const user = await User.findOne({ email: email });
+    if (!user) {
+      return res.status(400).json({ message: "User not found" });
+    }
+    // Check password
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+      return res.status(400).json({ message: "Invalid password" });
+    }
+
+    // Generate token
+    const token = await user.generateAuthToken();
+    // Respond with success message and token
+    res.status(200).json({
+      message: "Login successful",
+      token: token,
+      userId: user._id // Include user ID in the response
+    });
+  } catch (error) {
+    res.status(500).json({ message: "Internal server error" });
+  }
+};
+
+
+// *-------------------
 // Registration Logic
 // *-------------------
 const register = async (req, res) => {
@@ -87,4 +122,4 @@ const update = async (req, res) => {
 
 
 
-module.exports = { home, register, profile, update };
+module.exports = { home, login, register, profile, update };
