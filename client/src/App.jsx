@@ -9,7 +9,7 @@ import Profile from './pages/Profile';
 const App = () => {
 
   return (
-    <div>
+    <>
       <BrowserRoute>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -20,7 +20,7 @@ const App = () => {
         </Routes>
       </BrowserRoute>
       
-    </div>
+    </>
   )
 }
 
