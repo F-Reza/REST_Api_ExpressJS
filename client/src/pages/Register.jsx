@@ -76,6 +76,7 @@ const Register = () => {
                       name="phone"
                       value={user.phone}
                       onChange={handleInput}
+                      placeholder="phone"
                     />
                   </div>
 
@@ -86,6 +87,7 @@ const Register = () => {
                       name="address"
                       value={user.address}
                       onChange={handleInput}
+                      placeholder="address"
                     />
                   </div>
 

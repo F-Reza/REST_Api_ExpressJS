@@ -18,7 +18,8 @@ const Navbar = () => {
                                         Home
                                         </button>
                                     )}
-                                </NavLink></li>
+                                </NavLink>
+                            </li>
                             <li>
                                 <NavLink to='/about'>
                                     {({isActive}) => (
@@ -26,7 +27,8 @@ const Navbar = () => {
                                         About
                                         </button>
                                     )}
-                                </NavLink></li>
+                                </NavLink>
+                            </li>
                             <li>
                                 <NavLink to='/contact'>
                                     {({isActive}) => (
@@ -34,7 +36,8 @@ const Navbar = () => {
                                         Contact
                                         </button>
                                     )}
-                                </NavLink></li>
+                                </NavLink>
+                            </li>
                             <li>
                                 <NavLink to='/register'>
                                     {({isActive}) => (
@@ -42,7 +45,17 @@ const Navbar = () => {
                                         Register
                                         </button>
                                     )}
-                                </NavLink></li>
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink to='/login'>
+                                    {({isActive}) => (
+                                        <button className={isActive ? 'btn btn-active' : 'btn'}>
+                                        Login
+                                        </button>
+                                    )}
+                                </NavLink>
+                            </li>
                             <li>
                                 <NavLink to='/profile/101/Arko/Dhaka'>
                                     {({isActive}) => (

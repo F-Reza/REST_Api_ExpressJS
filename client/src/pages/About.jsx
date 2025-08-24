@@ -1,14 +1,59 @@
-import React from 'react';
+import {NavLink}  from "react-router-dom";
 
-const About = () => {
-    return (
-        <div>
-            <h1>About RezaWeb</h1>
-            <p>RezaWeb is a platform to showcase various React components and examples. Here, you can learn about different React features and how to implement them in your projects.</p>
-            <p>Explore our components, tutorials, and guides to enhance your React skills and build amazing applications.</p>
-            <p>Stay tuned for more updates and new components!</p>
-        </div>
-    );
+ const About = () => {
+  return (
+    <>
+      <main>
+        <section className="section-hero">
+          <div className="container grid grid-two-cols">
+            <div className="hero-content">
+              {/* <p>We care to cure your Health</p> */}
+
+              <h1>Why Choose Us? </h1>
+              <p>
+                Expertise: Our team consists of experienced IT professionals who
+                are passionate about staying up-to-date with the latest industry
+                trends.
+              </p>
+              <p>
+                Customization: We understand that every business is unique.
+                Thats why we create solutions that are tailored to your specific
+                needs and goals.
+              </p>
+              <p>
+                Customer-Centric Approach: We prioritize your satisfaction and
+                provide top-notch support to address your IT concerns.
+              </p>
+              <p>
+                Affordability: We offer competitive pricing without compromising
+                on the quality of our services.
+              </p>
+              <p>
+                Reliability: Count on us to be there when you need us. We're
+                committed to ensuring your IT environment is reliable and
+                available 24/7.
+              </p>
+              <br />
+              <div className="btn btn-group">
+                <NavLink to="/contact">
+                  <button className="btn"> Connect Now</button>
+                </NavLink>
+                <button className="btn secondary-btn">learn more</button>
+              </div>
+            </div>
+            <div className="hero-image">
+              <img
+                src="/src/assets/img/about.png"
+                alt="about img"
+                width="400"
+                // height="500"
+              />
+            </div>
+          </div>
+        </section>
+      </main>
+    </>
+  );
 };
 
 export default About;

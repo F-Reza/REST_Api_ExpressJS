@@ -26,6 +26,10 @@ body {
   min-height: 100vh;
   font-size: 1.6rem;
 }
+div {
+  box-sizing: border-box;
+  text-align: justify;
+}
 
 a {
   font-weight: 500;
@@ -53,3 +57,166 @@ ul {
 li {
   list-style: none;
 }
+
+
+/** -----------------------
+** registration section css
+** -------------------------  */
+.main-heading {
+  font-size: 3.2rem;
+  text-transform: capitalize;
+}
+/* pseduo elements  */
+.main-heading {
+  position: relative;
+  text-transform: capitalize;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50%;
+    height: 0.5rem;
+    background-color: var(--btn-color);
+  }
+}
+.section-registration, .section-login {
+  padding: 0 3.2rem;
+
+  & .container {
+    /* background-color: #fff; */
+    padding-top: 3.2rem;
+    align-items: center;
+
+    & img {
+      width: 80%;
+      height: auto;
+    }
+  }
+
+  & .registration-form, .login-form {
+    width: 50%;
+    & label {
+      display:  block;
+      margin: 2.4rem 0 0.8rem 0;
+      text-transform: capitalize;
+    }
+    & input {
+      width: 80%;
+      padding: 0.6rem 0.6rem;
+    }
+
+    & button {
+      margin-top: 3.2rem;
+    }
+  }
+}
+
+/* pseduo elements  */
+.main-heading {
+  position: relative;
+  text-transform: capitalize;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50%;
+    height: 0.5rem;
+    background-color: var(--btn-color);
+  }
+}
+
+.content .btns {
+  margin: 25px 0;
+  display: inline-flex;
+  justify-content: center;
+}
+.content .btns a {
+  display: inline-block;
+  margin: 0 10px;
+  text-decoration: none;
+  border: 2px solid var(--btn-color);
+  color: var(--btn-color);
+  font-weight: 500;
+  padding: 10px 25px;
+  border-radius: 25px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+.content .btns a:hover {
+  background: var(--btn-color);
+  color: #fff;
+}
+
+
+/* error page  */
+#error-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#error-page .content {
+  max-width: 70rem;
+  text-align: center;
+}
+
+
+/* Define the color variable first */
+  :root {
+    --btn-color: #ff5e00; /* Example color, change as needed */
+  }
+
+  /* Define the animation */
+  @keyframes animate {
+  0% {
+    background-position: 0 0;
+  }
+  25% {
+    background-position: 100% 0;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  75% {
+    background-position: 0% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+  /* Style the element */
+  .content h2.header {
+    font-size: 18vw;
+    line-height: 1em;
+    animation: animate 10s ease-in-out infinite;
+    background: -webkit-repeating-linear-gradient(
+      -60deg,
+      #71b7e6,
+      var(--btn-color, #ff5e00), /* Fallback to #ff5e00 if --btn-color is invalid */
+      #b98acc,
+      #ee8176,
+      #b98acc,
+      var(--btn-color, #ff5e00),
+      #9b59b6
+    );
+    background: repeating-linear-gradient(
+      -60deg,
+      #71b7e6,
+      var(--btn-color, #ff5e00),
+      #b98acc,
+      #ee8176,
+      #b98acc,
+      var(--btn-color, #ff5e00),
+      #9b59b6
+    );
+    background-size: 500%;
+    -webkit-background-clip: text;
+            background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.25);
+    position: relative;
+  }
