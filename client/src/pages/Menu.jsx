@@ -25,6 +25,13 @@ const Menu = () => {
                     </button>
                 )} 
             </NavLink>
+            <NavLink to='/register'>
+                {({isActive}) => (
+                    <button className={isActive ? 'btn btn-active' : 'btn'}>
+                    Register
+                    </button>
+                )} 
+            </NavLink>
             <NavLink to='/profile/101/Arko/Dhaka'>
                 {({isActive}) => (
                     <button className={isActive ? 'btn btn-active' : 'btn'}>
