@@ -1,5 +1,4 @@
-import React from 'react';
-import Menu from './Menu';
+
 import { useParams } from 'react-router-dom';
 
 const Profile = () => {
@@ -8,7 +7,6 @@ const Profile = () => {
 
     return (
         <div>
-            <Menu />
             <h2>Profile Page</h2>
             <p>This is the profile page where user information will be displayed.</p>
             <h3>User ID: {id}</h3>

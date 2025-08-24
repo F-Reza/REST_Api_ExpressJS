@@ -2,16 +2,19 @@ import { BrowserRouter as BrowserRoute, HashRouter, Routes, Route } from 'react-
 import './assets/css/App.css'
 import Home from './pages/Home';
 import Error404 from './pages/Error404';
-import Register from './pages/Register';
 import Contact from './pages/Contact';
 import About from './pages/About';
 import Profile from './pages/Profile';
+import Register from './pages/Register';
+import Navbar from './components/Navbar';
+import Menu from './pages/Menu';
 
 const App = () => {
 
   return (
     <>
       <BrowserRoute>
+        <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
@@ -27,4 +30,3 @@ const App = () => {
 }
 
 export default App
-
