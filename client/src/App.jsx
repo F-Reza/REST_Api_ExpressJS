@@ -7,7 +7,6 @@ import About from './pages/About';
 import Profile from './pages/Profile';
 import Register from './pages/Register';
 import Navbar from './components/Navbar';
-import Menu from './pages/Menu';
 
 const App = () => {
 

@@ -1,16 +1,31 @@
 .btn {
     background-color: #007bff;
     color: white;
-    margin: 1px;
     border: none;
-    
+    padding: 8px 20px;
     cursor: pointer;
 }
 .btn-active {
     background-color: #000000;
 }
 
-
+.logo-brand {
+    font-size: 1.8rem;
+    font-weight: bold;
+    background-color: rgb(241, 14, 90);
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    cursor: pointer;
+}
+.logo-brand a {
+    color: white;
+    font-weight: 500;
+    text-decoration: inherit;
+}   
+.logo-brand:hover {
+    background-color: rgb(36, 65, 230);
+}   
 
 .active-item {
     background-color: #f0f0f0;
