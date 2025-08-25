@@ -22,9 +22,36 @@ const Register = () => {
   };
 
   // handle form on submit
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(user);
+    
+    try {
+      const response = await fetch("http://localhost:5000/register", {
+      method: "POST", 
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(user),
+    });
+
+    console.log(response);
+    if (response.status === 200) {
+      alert("Registration Successful");
+      setUser({
+        name: "",
+        email: "",
+        phone: "",
+        address: "",
+        password: "",
+      });
+    } else {
+      alert("Registration Failed");
+    }
+
+    } catch (error) {
+      console.log("Error parsing JSON:", error);
+    }
   };
 
   return (
