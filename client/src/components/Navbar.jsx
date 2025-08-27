@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import { useAuth } from '../store/auth';
 
 const Navbar = () => {
+    const { isLoggedIn } = useAuth();
     return (
         <>
             <header>
@@ -38,24 +40,30 @@ const Navbar = () => {
                                     )}
                                 </NavLink>
                             </li>
-                            <li>
-                                <NavLink to='/register'>
-                                    {({isActive}) => (
-                                        <button className={isActive ? 'btn btn-active' : 'btn'}>
-                                        Register
-                                        </button>
-                                    )}
-                                </NavLink>
-                            </li>
-                            <li>
-                                <NavLink to='/login'>
-                                    {({isActive}) => (
-                                        <button className={isActive ? 'btn btn-active' : 'btn'}>
-                                        Login
-                                        </button>
-                                    )}
-                                </NavLink>
-                            </li>
+                            
+                            {!isLoggedIn ? (
+                                <>
+                                <li>
+                                    <NavLink to='/register'>
+                                        {({isActive}) => (
+                                            <button className={isActive ? 'btn btn-active' : 'btn'}>
+                                            Register
+                                            </button>
+                                        )}
+                                    </NavLink>
+                                </li>
+                                <li>
+                                    <NavLink to='/login'>
+                                        {({isActive}) => (
+                                            <button className={isActive ? 'btn btn-active' : 'btn'}>
+                                            Login
+                                            </button>
+                                        )}
+                                    </NavLink>
+                                </li>
+                                </>
+                            ): 
+                            <>
                             <li>
                                 <NavLink to='/profile/101/Arko/Dhaka'>
                                     {({isActive}) => (
@@ -63,7 +71,20 @@ const Navbar = () => {
                                         Profile
                                         </button>
                                     )}
-                                </NavLink></li>
+                                </NavLink>
+                            </li>
+                                <li>
+                                    <NavLink to='/logout'>
+                                        {({isActive}) => (
+                                            <button className={isActive ? 'btn btn-active' : 'btn'}>
+                                            Logout
+                                            </button>
+                                        )}
+                                    </NavLink>
+                                </li>
+                            </>
+                            }
+                            
                         </ul>
                     </nav>
                 </div>

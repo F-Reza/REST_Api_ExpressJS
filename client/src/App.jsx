@@ -7,6 +7,7 @@ import About from './pages/About';
 import Profile from './pages/Profile';
 import Register from './pages/Register';
 import Login from './pages/Login';
+import Logout from './pages/Logout';
 import Navbar from './components/Navbar';
 
 const App = () => {
@@ -21,6 +22,7 @@ const App = () => {
           <Route path="/contact" element={<Contact />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/logout" element={<Logout />} />
           <Route path="/profile/:id/:name/:address" element={<Profile />} />
           <Route path="/*" element={<Error404 />} />
         </Routes>

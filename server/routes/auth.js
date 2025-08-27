@@ -7,6 +7,7 @@ const router = express.Router();
 const authControllers = require("../controllers/auth-controller");
 const validate = require("../middlewares/validate-middleware");
 const signupSchema = require("../validators/signup-validation");
+const authMiddleware = require("../middlewares/auth-middleware");
 
 // router.route("/").get((req, res) => {
 //   res.status(200).send("Welcome to home");
@@ -16,7 +17,7 @@ const signupSchema = require("../validators/signup-validation");
 router.route("/").get(authControllers.home);
 router.route("/register").post(validate(signupSchema), authControllers.register);
 router.route("/login").post(authControllers.login);
-router.route("/profile").post(authControllers.profile);
+router.route("/profile").get(authMiddleware, authControllers.profile);
 router.route("/update").post(authControllers.update);
 
 module.exports = router;

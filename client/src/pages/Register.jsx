@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../store/auth";
 
 
 const Register = () => {
@@ -13,6 +14,7 @@ const Register = () => {
   });
 
 const navigate = useNavigate();
+const { storetokenInLS } = useAuth();
 
 const handleInput = (e) => {
   console.log(e);
@@ -45,6 +47,10 @@ const handleSubmit = async (e) => {
 
     if (response.ok) { // Use response.ok instead of status === 200
       alert("Registration Successful");
+
+      storetokenInLS(data.token);
+      // localStorage.setItem("token", data.token);
+
       setUser({
         name: "",
         email: "",

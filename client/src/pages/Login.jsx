@@ -2,6 +2,7 @@ import React from 'react';
 
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../store/auth";
 
 const Login = () => {
   const [user, setUser] = useState({
@@ -10,6 +11,7 @@ const Login = () => {
   });
 
   const navigate = useNavigate();
+  const { storetokenInLS } = useAuth();
 
   const handleInput = (e) => {
     console.log(e);
@@ -41,6 +43,9 @@ const Login = () => {
       const data = await response.json();
       console.log(data);
       alert("Login Successful");
+      storetokenInLS(data.token);
+      // localStorage.setItem("token", data.token);
+      
       setUser({
         email: "",
         password: "",

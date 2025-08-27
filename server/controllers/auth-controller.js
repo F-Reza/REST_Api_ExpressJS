@@ -108,9 +108,9 @@ const register = async (req, res) => {
 // *-------------------
 const profile = async (req, res) => {
   try {
-    const userId = req.body.userId; // Assuming user ID is sent in the request body
-    // Here you would typically fetch user data from a database
-    res.status(200).json({ message: `Profile data for user ${userId}` });
+    const userData =  req.profile;
+    console.log(userData);
+    res.status(200).json({ message: "User profile fetched successfully", data: userData });
   } catch (error) {
     res.status(500).json({ message: "Internal server error" });
   }
