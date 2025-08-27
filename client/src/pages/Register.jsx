@@ -1,5 +1,7 @@
 import React from 'react';
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 
 const Register = () => {
   const [user, setUser] = useState({
@@ -10,24 +12,26 @@ const Register = () => {
     password: "",
   });
 
-  const handleInput = (e) => {
-    console.log(e);
-    let name = e.target.name;
-    let value = e.target.value;
+const navigate = useNavigate();
 
-    setUser({
-      ...user,
-      [name]: value,
-    });
-  };
+const handleInput = (e) => {
+  console.log(e);
+  let name = e.target.name;
+  let value = e.target.value;
+
+  setUser({
+    ...user,
+    [name]: value,
+  });
+};
 
   // handle form on submit
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    console.log(user);
-    
-    try {
-      const response = await fetch("http://localhost:5000/register", {
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  console.log(user);
+  
+  try {
+    const response = await fetch("http://localhost:5000/api/auth/register", {
       method: "POST", 
       headers: {
         "Content-Type": "application/json",
@@ -35,8 +39,11 @@ const Register = () => {
       body: JSON.stringify(user),
     });
 
-    console.log(response);
-    if (response.status === 200) {
+    // Parse the response regardless of status
+    const data = await response.json();
+    console.log(data);
+
+    if (response.ok) { // Use response.ok instead of status === 200
       alert("Registration Successful");
       setUser({
         name: "",
@@ -45,14 +52,18 @@ const Register = () => {
         address: "",
         password: "",
       });
+      // Navigate to login page
+      navigate("/login");
     } else {
-      alert("Registration Failed");
+      // Show server error message if available
+      alert(data.message || "Registration Failed");
     }
 
-    } catch (error) {
-      console.log("Error parsing JSON:", error);
-    }
-  };
+  } catch (error) {
+    console.log("Error:", error);
+    alert("Network error or server unavailable");
+  }
+};
 
   return (
     <>

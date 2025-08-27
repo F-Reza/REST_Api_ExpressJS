@@ -63,8 +63,6 @@ const login = async (req, res) => {
 // *-------------------
 const register = async (req, res) => {
   try {
-
-    console.log("Registering user...");
     const { name, email, phone, address, password } = req.body;
 
     // Validate input
@@ -97,6 +95,7 @@ const register = async (req, res) => {
       token: await newUser.generateAuthToken(),
       userId: newUser._id // Include user ID in the response
     });
+    console.log("User registered successfully.");
   } catch (error) {
     res.status(500).json({ message: "Internal server error" });
     // next(error); // Pass the error to the next middleware for centralized error handling
