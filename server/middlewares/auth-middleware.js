@@ -12,14 +12,14 @@ const authMiddlewarw = async (req, res, next) => {
     // const jwtToken = token.replace("Bearer ", "").trim();
     const jwtToken = token.split(" ")[1];
     const isVerified = jwt.verify(jwtToken, process.env.JWT_SECRET);
-    console.log(isVerified);
+    // console.log(isVerified);
     
     const userData = await User.findOne({ _id: isVerified.id }).
     select({ password: 0 });
     
     req.profile = userData;
-    // req.token = token;
-    // req.userId = userData.id;
+    req.token = token;
+    req.userId = userData.id;
 
     next(); 
   } else {
