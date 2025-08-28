@@ -52,6 +52,7 @@ const Login = () => {
       });
       // Navigate to home page
       navigate("/");
+      window.location.reload();
 
       } else {
         const errorData = await response.json();
