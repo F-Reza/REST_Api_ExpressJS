@@ -1,5 +1,5 @@
 ## REST_Api_ExpressJS
 
-### Reack,
+### Reack
 ### Express.js
 ### MongoDB
